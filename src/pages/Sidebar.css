@@ -6,6 +6,7 @@
   height:100vh;
 }
 .sidebar_items{
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   font-size: 20px;
@@ -17,7 +18,4 @@
 }
 .menu_button{
   display: inline;
-}
-p.menu_button{
-  padding-bottom: 20px;
 }

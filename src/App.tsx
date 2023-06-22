@@ -4,11 +4,15 @@ import './pages/Sidebar.css'
 import Map from './pages/Map'
 import Sidebar from './pages/Sidebar'
 import DroneManagement from './pages/DroneManagement'
+import Header from './pages/Header'
 
 function App() {
 
   return (
     <>
+    {/** Header */}
+    <Header/>
+    
     {/** Sidebar */}
     <Sidebar/>
 
