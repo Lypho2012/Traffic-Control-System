@@ -1,8 +1,15 @@
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { useMemo } from "react";
 function Map() {
+  function getEnvVar(v: string): string {
+    const ret = process.env[v];
+    if (ret === undefined) {
+        throw new Error("process.env." + v + " is undefined!");
+    }
+    return ret;
+}
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    googleMapsApiKey: getEnvVar("REACT_APP_GOOGLE_API_KEY"),
   });
   const center = useMemo(() => ({ lat: 18.52043, lng: 73.856743 }), []);
 
