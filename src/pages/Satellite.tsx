@@ -1,7 +1,18 @@
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import * as tf from "@tensorflow/tfjs";
 
 function Map() {
+  /** 
+   * Load satellite segmentation model 
+  */
+  async function loadModel() {
+    return await tf.loadLayersModel("public/models/satellite_segmentation_30");
+  }
+
+  /**
+   * Recenters map to user location
+   */
   function recenter() {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
@@ -20,6 +31,24 @@ function Map() {
       throw Error("Error: Your browser doesn't support geolocation.");
     }
   }
+
+  /**
+   * Uses google maps current window to predict road segmentation and returns overlay
+   */
+  function predict() {
+    const model = loadModel();
+    const currentMap = document.getElementById("map-container");
+    
+  }
+
+  // update road segmentation overlay in real-time
+  const [roadSegmentation,setRoadSegmentation] = useState(predict()); // TODO: replace date with output of model
+
+  useEffect(() => {
+    setInterval(() => setRoadSegmentation(predict()), 1000)
+  },[])
+  
+  // load google maps api
   const [center,setCenter] = useState({ lat: 37, lng: -122 });
   
   const { isLoaded } = useLoadScript({
@@ -32,7 +61,7 @@ function Map() {
         <h1>Loading...</h1>
       ) : (
       <GoogleMap
-        mapContainerClassName="map-container"
+        id="map-container"
         center={center}
         zoom={10}
       />
