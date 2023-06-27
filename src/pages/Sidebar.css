@@ -1,8 +1,6 @@
 .sidebar{
   width:220px;
   background-color: #91b2c4;
-  padding-top: 20px;
-  padding-left:20px;
   height:100vh;
   position: fixed;
   top: 0;
@@ -13,7 +11,7 @@
   width: 0;
 }
 .sidebar_items{
-  padding-top: 10px;
+  padding-top: 20px;
   padding-left: 40px;
   display: flex;
   flex-direction: column;
@@ -26,10 +24,15 @@
 }
 #menu_text{
   display: inline;
+  position:relative;
+  top: 20px;
+  padding-left: 40px;
 }
 #menu_button{
   width:30px;
   height:30px;
   position:absolute;
+  padding-top: 10px;
+  padding-left: 10px;
   filter:grayscale(100%);
 }

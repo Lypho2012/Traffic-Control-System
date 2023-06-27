@@ -1,8 +1,6 @@
 .header{
   width:100%;
   background-color: #b4d7ec;
-  padding-top: 20px;
-  padding-left:20px;
   height:80px;
   position: fixed;
   top: 0;
@@ -11,6 +9,7 @@
   flex-direction: row;
   font-size: 20px;
   color:black;
+  box-sizing: border-box;
 }
 .header_items{
   padding-left:20px;

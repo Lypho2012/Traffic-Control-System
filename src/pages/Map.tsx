@@ -1,17 +1,30 @@
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
-import { useMemo } from "react";
+import { useState } from "react";
+
 function Map() {
-  function getEnvVar(v: string): string {
-    const ret = process.env[v];
-    if (ret === undefined) {
-        throw new Error("process.env." + v + " is undefined!");
+  function recenter() {
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position: GeolocationPosition) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+  
+          setCenter(pos);
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      throw Error("Error: Your browser doesn't support geolocation.");
     }
-    return ret;
-}
+  }
+  const [center,setCenter] = useState({ lat: 37, lng: -122 });
+  
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: getEnvVar("REACT_APP_GOOGLE_API_KEY"),
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   });
-  const center = useMemo(() => ({ lat: 18.52043, lng: 73.856743 }), []);
 
   return (
     <div className="page">
@@ -24,8 +37,8 @@ function Map() {
         zoom={10}
       />
       )}
+      <button id="recenter-button" onClick={() => recenter()}>Recenter</button>
     </div>
   )
 }
-
 export default Map

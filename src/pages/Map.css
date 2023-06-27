@@ -1,6 +1,17 @@
 .page{
-  width:500px;
-  height:500px;
+  width:100%;
+  height:100%;
   left:220px;
   top:200px;
+}
+.map-container {
+  left:212px;
+  top:72px;
+  width:89.3%;
+  height:92vh;
+}
+#recenter-button {
+  position:absolute;
+  left:1012px;
+  top:90px;
 }
