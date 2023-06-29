@@ -51,6 +51,17 @@ function Map() {
         individual_patched_image = individual_patched_image[0]
         image_dataset.append(individual_patched_image)
     */
+    
+    return image;
+  }
+
+  /**
+   * Uses google maps current window to predict road segmentation and returns overlay
+   */
+  async function predict() {
+    const model = loadModel();
+    const currentMap = tf.browser.fromPixels(document.querySelector("#static-image") as HTMLImageElement);
+    const prediction = (await model).predict(await process_image(currentMap));
     /*
     class_building = '#3C1098'
     class_building = class_building.lstrip('#')
@@ -76,15 +87,6 @@ function Map() {
     class_unlabeled = class_unlabeled.lstrip('#')
     class_unlabeled = np.array(tuple(int(class_unlabeled[i:i+2],16) for i in (0,2,4)))
     */
-  }
-
-  /**
-   * Uses google maps current window to predict road segmentation and returns overlay
-   */
-  async function predict() {
-    const model = loadModel();
-    const currentMap = tf.browser.fromPixels(document.querySelector("#static-image") as HTMLImageElement);
-    const prediction = (await model).predict(preprocess(currentMap));
     return prediction;
   }
 
