@@ -1,5 +1,9 @@
+:root{
+  --sidebar_width: 220px;
+}
 .sidebar{
-  width:220px;
+  margin: 0;
+  width:var(--sidebar_width);
   background-color: #91b2c4;
   height:100vh;
   position: fixed;

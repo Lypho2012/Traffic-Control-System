@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   const sidebarItems = [
-    {name: 'Map', path: '/'},
-    {name: 'Drone Management', path: '/drone-management'},
+    {name: 'Satellite Map View', path: '/', page: 'SatelliteMapView'},
+    {name: 'Drone live feed', path: '/drone-live-feed', page: 'DroneLiveFeed'},
+    {name: 'Manage drones', path: '/manage-drones', page: 'DroneManagement'},
   ]
   return (
     <div className="sidebar">
@@ -11,7 +12,7 @@ const Sidebar = () => {
       <p className="sidebar_items" id='menu_text'>Menu</p>
       <div className="sidebar_items">
         {sidebarItems.map((item) => {
-          return <Link key={item.name} to={item.path}>{item.name}</Link>
+          return <Link key={item.page} to={item.path}>{item.name}</Link>
         })}
       </div>
     </div>

@@ -1,10 +1,13 @@
+:root{
+  --header_height: 100px;
+}
 .header{
   width:100%;
   background-color: #b4d7ec;
-  height:100px;
+  height:var(--header_height);
   position: fixed;
   top: 0;
-  left: 220px;
+  left: var(--sidebar_width);
   display: flex;
   flex-direction: row;
   font-size: 20px;

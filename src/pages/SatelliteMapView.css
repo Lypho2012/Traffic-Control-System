@@ -1,22 +1,37 @@
+:root{
+  --satellite_map_width: 70%;
+  --satellite_map_height: 92vh;
+}
 .page{
   width:100%;
   height:100%;
-  left:220px;
-  top:200px;
+  padding: 0;
+  margin: 0;
 }
 #map-container {
-  left:212px;
-  top:72px;
-  width:89.3%;
-  height:92vh;
+  margin: 0;
+  padding: 0;
+  left:var(--sidebar_width);
+  top:var(--header_height);
+  width: var(--satellite_map_width);
+  height:var(--satellite_map_height);
 }
 #recenter-button {
   position:absolute;
-  left:1012px;
-  top:90px;
+  left:calc(var(--sidebar_width) + calc(var(--satellite_map_width) / 2));
+  top:calc(var(--header_height) + 1px);
 }
-#static-image {
-  position:absolute;
-  left:1012px;
-  top:90px;
+#satellitemapview_dashboard{
+  position: absolute;
+  left:calc(var(--sidebar_width) + var(--satellite_map_width));
+  top:var(--header_height);
+  height:var(--satellite_map_height);
+  width:calc(100% - calc(var(--sidebar_width) + var(--satellite_map_width)));
+  display:flex;
+  flex-direction: column;
+  background-color: #e6f6ff;
+}
+#satellitemapview_dashboard_tabs{
+  display:flex;
+  flex-direction: row;
 }

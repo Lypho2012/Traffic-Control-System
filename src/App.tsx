@@ -7,6 +7,7 @@ import Map from './pages/SatelliteMapView'
 import Sidebar from './pages/Sidebar'
 import DroneManagement from './pages/DroneManagement'
 import Header from './pages/Header'
+import DroneLiveFeed from './pages/DroneLiveFeed'
 
 function App() {
 
