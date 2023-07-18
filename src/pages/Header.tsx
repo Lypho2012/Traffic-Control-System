@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <p className="header_items" id="smart_city">Smart City</p>
+      <p className="header_items" id="smart_city">City Traffic Report</p>
       <p className="header_items">{time.toLocaleTimeString()}</p>
       <p className="header_items">{time.toLocaleDateString()}</p>
       <p className="header_items">{temp}&deg; {theme}</p>
@@ -36,7 +36,9 @@ const Header = () => {
 
       <div className="profile">
         <img src={"/assets/profile-pic.png"}/>
+        <div className="profile_text">
         <p>Name</p>
+        </div>
       </div>
     </div>
   )
