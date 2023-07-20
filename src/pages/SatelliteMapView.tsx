@@ -2,9 +2,9 @@ import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { useEffect, useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import TextField from "@mui/material/TextField";
-import { Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Map() {
+function SatelliteMapView() {
   /** 
    * Load satellite segmentation model 
   */
@@ -53,20 +53,6 @@ function Map() {
     return prediction;
   }
 
-  /**
-   * Opens list of reported congestion events in dashboard
-   */
-  function openCongestionList() {
-
-  }
-
-  /**
-   * Opens list of reported accidents in dashboard
-   */
-  function openAccidentsList() {
-    
-  }
-
   // update road segmentation overlay in real-time
   const [roadSegmentation,setRoadSegmentation] = useState(predict()); 
 
@@ -83,8 +69,17 @@ function Map() {
 
   const [zoom,setZoom] = useState(10);
 
+  // dashboard tabs
+  const [isCongestionListOpened, setIsCongestionListOpened] = useState(false);
+  const [isAccidentsListOpened, setIsAccidentsListOpened] = useState(false);
+
+  const congestionListItems = [
+    {name: 'Satellite Map View', path: '/satellite-map-view', page: 'SatelliteMapView'}
+  ]
+
   return (
     <div className="page">
+      {/* Map */}
       {!isLoaded ? (
         <h1>Loading...</h1>
       ) : (
@@ -95,24 +90,38 @@ function Map() {
       </GoogleMap>
       
       )}
+
       <button id="recenter-button" onClick={() => recenter()}>Recenter</button>
+
+      {/* Dashboard on right */}
       <div id="satellitemapview_dashboard">
+        {/* Navigation Tabs */}
         <div id="satellitemapview_dashboard_tabs">
-          <button onClick={() => openCongestionList()}>Congestion</button>
-          <button onClick={() => openAccidentsList()}>Accidents</button>
+          <button onClick={() => {setIsCongestionListOpened(true); setIsAccidentsListOpened(false);}}>Congestion</button>
+          <button onClick={() => {setIsCongestionListOpened(false); setIsAccidentsListOpened(true);}}>Accidents</button>
         </div>
+
+        {/* Searchbar */}
         <TextField
           id="satellitemapview_dashboard_searchbar"
           variant="outlined"
           fullWidth
           label="Search"
         />
-        <Routes>
-          <Route path="/" element={}></Route>
-          <Route path="/drone-management" element={}></Route>
-        </Routes>
+
+        {/* Display List*/} 
+        {isCongestionListOpened ? 
+        (<div>
+          {congestionListItems.map((item) => {
+            return <button className="satellitemapview_dashboard_item">{item.name}</button>
+          })}
+        </div>) : 
+        (<div>
+          
+        </div>)}
+        
       </div>
     </div>
   )
 }
-export default Map
+export default SatelliteMapView

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   const sidebarItems = [
-    {name: 'Satellite Map View', path: '/', page: 'SatelliteMapView'},
+    {name: 'Satellite Map View', path: '/satellite-map-view', page: 'SatelliteMapView'},
     {name: 'Drone live feed', path: '/drone-live-feed', page: 'DroneLiveFeed'},
     {name: 'Manage drones', path: '/manage-drones', page: 'DroneManagement'},
   ]
