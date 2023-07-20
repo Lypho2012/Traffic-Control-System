@@ -1,6 +1,6 @@
 :root{
   --satellite_map_width: 70%;
-  --satellite_map_height: 92vh;
+  --satellite_map_height: 92vh; 
 }
 .page{
   width:100%;
@@ -26,12 +26,34 @@
   left:calc(var(--sidebar_width) + var(--satellite_map_width));
   top:var(--header_height);
   height:var(--satellite_map_height);
-  width:calc(100% - calc(var(--sidebar_width) + var(--satellite_map_width)));
+  width: calc(100% - calc(var(--sidebar_width) + var(--satellite_map_width)));
   display:flex;
   flex-direction: column;
   background-color: #e6f6ff;
 }
-#satellitemapview_dashboard_tabs{
+.satellitemapview_dashboard_tabs{
   display:flex;
   flex-direction: row;
+}
+.satellitemapview_dashboard_tabs button{
+  background-color: transparent;
+  border-width: 1px;
+  border-bottom: 0;
+}
+.satellitemapview_dashboard_item{
+  width:100%;
+  height:100px;
+  background-color:white;
+  display: flex;
+  flex-direction: column;
+}
+.satellitemapview_dashboard_item_contents{
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+.satellitemapview_dashboard_item_contents_middle{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }

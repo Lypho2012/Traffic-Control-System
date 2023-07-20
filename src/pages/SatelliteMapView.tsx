@@ -74,7 +74,8 @@ function SatelliteMapView() {
   const [isAccidentsListOpened, setIsAccidentsListOpened] = useState(false);
 
   const congestionListItems = [
-    {name: 'Satellite Map View', path: '/satellite-map-view', page: 'SatelliteMapView'}
+    {index: 1, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N'], severity: '40', details: []},
+    {index: 2, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N'], severity: '40', details: []}
   ]
 
   return (
@@ -96,7 +97,7 @@ function SatelliteMapView() {
       {/* Dashboard on right */}
       <div id="satellitemapview_dashboard">
         {/* Navigation Tabs */}
-        <div id="satellitemapview_dashboard_tabs">
+        <div className="satellitemapview_dashboard_tabs">
           <button onClick={() => {setIsCongestionListOpened(true); setIsAccidentsListOpened(false);}}>Congestion</button>
           <button onClick={() => {setIsCongestionListOpened(false); setIsAccidentsListOpened(true);}}>Accidents</button>
         </div>
@@ -113,7 +114,16 @@ function SatelliteMapView() {
         {isCongestionListOpened ? 
         (<div>
           {congestionListItems.map((item) => {
-            return <button className="satellitemapview_dashboard_item">{item.name}</button>
+            return <button className="satellitemapview_dashboard_item">
+              <div className="satellitemapview_dashboard_item_contents">
+                <p>{item.index}</p>
+                <div className="satellitemapview_dashboard_item_contents_middle">
+                  <p>{item.location}</p>
+                  <p>{item.severity}</p>
+                  {item.highways.map((highway) => {return <p>{highway}</p>})}
+                </div>
+              </div>
+            </button>
           })}
         </div>) : 
         (<div>
