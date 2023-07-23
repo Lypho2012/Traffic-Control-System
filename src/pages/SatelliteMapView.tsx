@@ -74,12 +74,12 @@ function SatelliteMapView() {
   const [isAccidentsListOpened, setIsAccidentsListOpened] = useState(false);
 
   const congestionListItems = [
-    {index: 1, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N'], severity: '40', details: []},
-    {index: 2, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N'], severity: '40', details: []}
+    {index: 1, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N','85S'], severity: '40', details: []},
+    {index: 2, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N','85S'], severity: '40', details: []}
   ]
 
   return (
-    <div className="page">
+    <div>
       {/* Map */}
       {!isLoaded ? (
         <h1>Loading...</h1>
@@ -106,7 +106,6 @@ function SatelliteMapView() {
         <TextField
           id="satellitemapview_dashboard_searchbar"
           variant="outlined"
-          fullWidth
           label="Search"
         />
 
@@ -116,12 +115,13 @@ function SatelliteMapView() {
           {congestionListItems.map((item) => {
             return <button className="satellitemapview_dashboard_item">
               <div className="satellitemapview_dashboard_item_contents">
-                <p>{item.index}</p>
+                <p className="satellitemapview_dashboard_item_index">{item.index}</p>
                 <div className="satellitemapview_dashboard_item_contents_middle">
                   <p>{item.location}</p>
-                  <p>{item.severity}</p>
-                  {item.highways.map((highway) => {return <p>{highway}</p>})}
+                  <progress value={item.severity} max="100" color="red">{item.severity}</progress>
+                  <div className="satellitemapview_dashboard_item_contents_highwaylist">{item.highways.map((highway) => {return <p className="satellitemapview_dashboard_item_contents_highways">{highway}</p>})}</div>
                 </div>
+                <p className="satellitemapview_dashboard_item_time">{item.time}</p>
               </div>
             </button>
           })}
