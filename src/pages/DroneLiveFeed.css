@@ -1,3 +1,15 @@
-#dronelivefeed_searchbar{
-  left:100px;
+#dronelivefeed{
+  position: absolute;
+  left:var(--sidebar_width);
+  top:var(--header_height);
+  width: 300px;
+  height: 300px;
+}
+.drone_image{
+  width:100px;
+  height:100px;
+}
+.dronelivefeed_dronelist{
+  left:300px;
+  top:300px;
 }

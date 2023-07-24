@@ -14,12 +14,6 @@ function App() {
 
   return (
     <>
-    {/** Routes */}
-    <Routes>
-      <Route path="/satellite-map-view" element={<SatelliteMapView/>}></Route>
-      <Route path="/drone-management" element={<DroneManagement/>}></Route>
-      <Route path="/drone-live-feed" element={<DroneLiveFeed/>}></Route>
-    </Routes>
 
     {/** Header */}
     <Header/>
@@ -27,6 +21,12 @@ function App() {
     {/** Sidebar */}
     <Sidebar/>
 
+    {/** Routes */}
+    <Routes>
+      <Route path="/satellite-map-view" element={<SatelliteMapView/>}></Route>
+      <Route path="/drone-management" element={<DroneManagement/>}></Route>
+      <Route path="/drone-live-feed" element={<DroneLiveFeed/>}></Route>
+    </Routes>
     </>
   )
 }
