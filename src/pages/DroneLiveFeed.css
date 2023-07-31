@@ -5,11 +5,28 @@
   width: 300px;
   height: 300px;
 }
+#dronelivefeed_searchbar{
+  height: 10px;
+}
 .drone_image{
   width:100px;
-  height:100px;
 }
 .dronelivefeed_dronelist{
   left:300px;
   top:300px;
+  display: flex;
+  flex-direction: column;
+}
+.dronelivefeed_dronelist_item{
+  border-width: 2px;
+  border-color: black;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  height:150px;
+  padding-top:10%;
+}
+.dronelivefeed_dronelist_item_status{
+  background-color: green !important;
+  width: 10px;
 }

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
+import SatelliteMapViewDashboard from "./SatelliteMapViewComponents/SatelliteMapViewDashboard";
+import SatelliteMapViewKey from "./SatelliteMapViewComponents/SatelliteMapViewKey";
 
 function SatelliteMapView() {
   /** 
@@ -69,15 +71,6 @@ function SatelliteMapView() {
 
   const [zoom,setZoom] = useState(10);
 
-  // dashboard tabs
-  const [isCongestionListOpened, setIsCongestionListOpened] = useState(false);
-  const [isAccidentsListOpened, setIsAccidentsListOpened] = useState(false);
-
-  const congestionListItems = [
-    {index: 1, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N','85S'], severity: '40', details: []},
-    {index: 2, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N','85S'], severity: '40', details: []}
-  ]
-
   return (
     <div>
       {/* Map */}
@@ -85,52 +78,18 @@ function SatelliteMapView() {
         <h1>Loading...</h1>
       ) : (
       <GoogleMap
-        id="map-container"
+        id="satellitemapcontainer"
         center={center}
         zoom={zoom}>
+          <SatelliteMapViewKey></SatelliteMapViewKey>
       </GoogleMap>
-      
       )}
 
+      {/** Recenter button */}
       <button id="recenter-button" onClick={() => recenter()}>Recenter</button>
 
       {/* Dashboard on right */}
-      <div id="satellitemapview_dashboard">
-        {/* Navigation Tabs */}
-        <div className="satellitemapview_dashboard_tabs">
-          <button onClick={() => {setIsCongestionListOpened(true); setIsAccidentsListOpened(false);}}>Congestion</button>
-          <button onClick={() => {setIsCongestionListOpened(false); setIsAccidentsListOpened(true);}}>Accidents</button>
-        </div>
-
-        {/* Searchbar */}
-        <TextField
-          id="satellitemapview_dashboard_searchbar"
-          variant="outlined"
-          label="Search"
-        />
-
-        {/* Display List*/} 
-        {isCongestionListOpened ? 
-        (<div>
-          {congestionListItems.map((item) => {
-            return <button className="satellitemapview_dashboard_item">
-              <div className="satellitemapview_dashboard_item_contents">
-                <p className="satellitemapview_dashboard_item_index">{item.index}</p>
-                <div className="satellitemapview_dashboard_item_contents_middle">
-                  <p>{item.location}</p>
-                  <progress value={item.severity} max="100" color="red">{item.severity}</progress>
-                  <div className="satellitemapview_dashboard_item_contents_highwaylist">{item.highways.map((highway) => {return <p className="satellitemapview_dashboard_item_contents_highways">{highway}</p>})}</div>
-                </div>
-                <p className="satellitemapview_dashboard_item_time">{item.time}</p>
-              </div>
-            </button>
-          })}
-        </div>) : 
-        (<div>
-          
-        </div>)}
-        
-      </div>
+      <SatelliteMapViewDashboard></SatelliteMapViewDashboard>
     </div>
   )
 }

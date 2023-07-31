@@ -2,7 +2,7 @@
   --satellite_map_width: 70%;
   --satellite_map_height: 90vh; 
 }
-#map-container {
+#satellitemapcontainer {
   margin: 0;
   padding: 0;
   left:calc(var(--sidebar_width) - 8px);
@@ -48,12 +48,10 @@
 .satellitemapview_dashboard_item_contents{
   display: flex;
   flex-direction: row;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 5px;
 }
 .satellitemapview_dashboard_item_index{
-  position:absolute;
-  left:10px;
+  margin: 5px;
 }
 .satellitemapview_dashboard_item_contents_middle{
   display: flex;
@@ -71,6 +69,28 @@
   padding:5px;
 }
 .satellitemapview_dashboard_item_time{
-  margin-top: auto;
-  margin-bottom: auto;
+  top: auto;
+  bottom: auto;
+  position: absolute;
+  right: 10px;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+}
+#satellitemapcontainer_key{
+  position: absolute;
+  left: 100px;
+  top: 500px;
+  background-color: #e6f6ff;
+  outline-color: black;
+  outline-width: 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.satellitemapcontainer_key_icons{
+  width: 30px;
+  height: 30px;
+  margin: 5px;
 }
