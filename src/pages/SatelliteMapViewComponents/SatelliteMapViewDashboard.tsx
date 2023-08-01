@@ -1,9 +1,6 @@
 import TextField from '@mui/material/TextField';
 import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
-import DroneLiveFeed from '../DroneLiveFeed';
-import DroneManagement from '../DroneManagement';
-import SatelliteMapView from '../SatelliteMapView';
 import SatelliteMapViewCongestionPage from './SatelliteMapViewCongestionPage';
 import SatelliteMapViewAccidentPage from './SatelliteMapViewAccidentPage';
 

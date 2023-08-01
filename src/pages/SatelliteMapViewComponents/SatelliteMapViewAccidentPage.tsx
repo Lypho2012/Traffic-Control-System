@@ -1,8 +1,13 @@
 import React from 'react'
+import { Routes, Route, useParams } from 'react-router-dom'
 
 function SatelliteMapViewAccidentPage() {
+  let { pageId } = useParams();
   return (
-    <div>SatelliteMapViewAccidentPage</div>
+    <div>
+      <button>Back</button>
+      <p></p>
+    </div>
   )
 }
 
