@@ -12,23 +12,14 @@ const REMOVE_ARTICLE = "REMOVE_ARTICLE"
 const ACCIDENT_ARTICLE = "ACCIDENT_ARTICLE"
 const CONGESTION_ARTICLE = "CONGESTION_ARTICLE"
 
-interface State {
+export interface State {
   noOfAccidents: number,
   noOfCongestion: number,
   accidentListItems: AccidentItem[],
   congestionListItems: CongestionItem[]
 }
 
-type AccidentItem = {
-  type: string,
-  index: number, 
-  location: string, 
-  time: string, 
-  highways: Array<string>, 
-  details: Array<string>
-}
-
-type CongestionItem = {
+export type AccidentItem = {
   type: string,
   index: number, 
   location: string, 
@@ -38,22 +29,32 @@ type CongestionItem = {
   details: Array<string>
 }
 
-type ActionType = {
+export type CongestionItem = {
+  type: string,
+  index: number, 
+  location: string, 
+  time: string, 
+  highways: Array<string>, 
+  severity: string, 
+  details: Array<string>
+}
+
+export type ActionType = {
   type: string,
   article: AccidentItem | CongestionItem
 }
 
-type DispatchType = (args: ActionType) => ActionType
+export type DispatchType = (args: ActionType) => ActionType
 
 // initial state
-const initialState: State = {
+export const initialState: State = {
   noOfAccidents: 1,
   noOfCongestion: 1,
   accidentListItems: [],
   congestionListItems: []
 }
 
-const reducer = (state = initialState, action: ActionType): State => {
+export const reducer = (state = initialState, action: ActionType): State => {
   switch (action.type) {
     case ADD_ARTICLE:
       switch (action.article.type) {
@@ -110,7 +111,7 @@ const reducer = (state = initialState, action: ActionType): State => {
   }
 }
 
-const store: Store<State, ActionType> & {dispatch: DispatchType} = configureStore({reducer});
+export const store: Store<State, ActionType> & {dispatch: DispatchType} = configureStore({reducer});
 
 // actions
 export function addArticle(article: AccidentItem | CongestionItem) {

@@ -3,6 +3,10 @@ import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import SatelliteMapViewCongestionPage from './SatelliteMapViewCongestionPage';
 import SatelliteMapViewAccidentPage from './SatelliteMapViewAccidentPage';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { AccidentItem, CongestionItem, State, addArticle } from '../../main';
+import { Dispatch } from '@reduxjs/toolkit';
+
 
 function SatelliteMapViewDashboard() {
   // dashboard tabs
@@ -10,6 +14,22 @@ function SatelliteMapViewDashboard() {
   const [isAccidentsListOpened, setIsAccidentsListOpened] = useState(false);
 
   // dashboard list
+  /*const congestionListItems: readonly CongestionItem[] = useSelector(
+    (state: State) => state.congestionListItems,
+    shallowEqual
+  )
+  const accidentListItems: readonly AccidentItem[] = useSelector(
+    (state: State) => state.accidentListItems,
+    shallowEqual
+  )
+
+  // add sample items
+  const dispatch: Dispatch<any> = useDispatch();
+
+  const [congestionItem, setCongestionItem] = React.useState<CongestionItem | {}>();
+  setCongestionItem({...congestionItem,index: 1});
+
+  dispatch(addArticle(congestionItem));*/
   const congestionListItems = [
     {index: 1, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N','85S'], severity: '40', details: []},
     {index: 2, location: 'Blossom Hill Rd Exit 4 to Almaden Expy Exit 6', time: '15:39', highways: ['85N','85S'], severity: '40', details: []}
