@@ -89,7 +89,7 @@ function SatelliteMapView() {
       <button id="recenter-button" onClick={() => recenter()}>Recenter</button>
 
       {/* Dashboard on right */}
-      <SatelliteMapViewDashboard></SatelliteMapViewDashboard>
+      <SatelliteMapViewDashboard/>
     </div>
   )
 }

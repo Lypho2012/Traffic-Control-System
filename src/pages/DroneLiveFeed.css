@@ -25,8 +25,13 @@
   flex-direction: row;
   height:150px;
   padding-top:10%;
+  width:320px;
 }
 .dronelivefeed_dronelist_item_status{
   background-color: green !important;
   width: 10px;
+}
+.dronelivefeed_video{
+  width: 800px;
+  height: 600px;
 }

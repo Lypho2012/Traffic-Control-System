@@ -42,11 +42,6 @@ function SatelliteMapViewDashboard() {
   
   return (
     <div id="satellitemapview_dashboard">
-      {/** Routes */}
-      <Routes>
-        <Route path="/satellite-map-view/accident/:accidentID" element={<SatelliteMapViewCongestionPage/>}></Route>
-        <Route path="/satellite-map-view/congestion/:congestionID" element={<SatelliteMapViewAccidentPage/>}></Route>
-      </Routes>
 
       {/* Navigation Tabs */}
       <div className="satellitemapview_dashboard_tabs">
